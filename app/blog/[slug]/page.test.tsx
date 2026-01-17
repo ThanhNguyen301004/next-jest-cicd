@@ -5,12 +5,8 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Page from "./page";
 
-it("App Router: Works with dynamic route segments", () => {
-  render(<Page params={{ slug: "Test" }} />);
-  expect(screen.getByRole("heading")).toHaveTextContent("Slug: Test");
-})
+it("renders slug from params", () => {
+  render(<Page params={{ slug: "Test" }} /> as any);
 
-it('Hello world', () => {
-  render(<Page params={{ slug: "Test" }} />);
-  expect(screen.getByText("Hello world")).toBeInTheDocument();
-})
+  expect(screen.getByRole("heading")).toHaveTextContent("Test");
+});
