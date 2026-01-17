@@ -1,13 +1,13 @@
-type Params = {
-  params: {
-    slug: string;
-  };
-};
+// app/blog/[slug]/page.tsx
 
-export async function generateMetadata({ params }: Params) {
-  return { title: `Post: ${params.slug}` };
+export async function generateStaticParams() {
+  return [
+    { slug: "post-1" },
+    { slug: "post-2" },
+    { slug: "hello-world" },
+  ];
 }
 
-export default function Page({ params }: Params) {
-  return <><h1>Slug: {params.slug}</h1><p>Hello world</p></>;
+export default function BlogDetail({ params }: { params: { slug: string } }) {
+  return <h1>{params.slug}</h1>;
 }
